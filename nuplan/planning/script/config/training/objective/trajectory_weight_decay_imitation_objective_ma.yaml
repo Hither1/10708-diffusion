@@ -1,0 +1,5 @@
+imitation_objective_ma:
+  _target_: nuplan.planning.training.modeling.objectives.trajectory_weight_decay_imitation_objective_ma.TrajectoryWeightDecayImitationObjectiveMA
+  _convert_: 'all'
+
+  weight: 1.0                  # weight contribution to the overall loss

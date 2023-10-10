@@ -1,0 +1,28 @@
+# @package _global_
+job_name: urban_driver_diffusion_model_ma
+py_func: train
+objective_aggregate_mode: mean
+
+defaults:
+  - override /data_augmentation:
+      # - kinematic_history_generic_agent_augmentation
+      # - generic_agent_dropout_augmentation
+      - dumb_augmentation_ma
+      # - history_dropout
+  - override /objective:
+      - trajectory_weight_decay_imitation_objective
+      - trajectory_weight_decay_imitation_objective_ma
+      # - imitation_objective
+      # - near_imitation_objective
+  - override /splitter: nuplan
+  - override /model: urban_driver_diffusion_model_ma
+  - override /scenario_filter: training_scenarios
+  - override /training_metric:
+      - avg_displacement_error
+      - avg_heading_error
+      - final_displacement_error
+      - final_heading_error
+      - near_displacement_error
+      - whitened_error
+      - whitened_acc
+      - ma_displacement_error

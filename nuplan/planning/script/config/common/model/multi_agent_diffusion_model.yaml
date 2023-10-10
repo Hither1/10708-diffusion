@@ -1,0 +1,59 @@
+_target_: nuplan.planning.training.modeling.models.multi_agent_model.MultiAgentDiffusionModel
+_convert_: 'all'
+
+# Agent params
+max_agents: 30
+# Map params
+map_features: [LANE, LEFT_BOUNDARY, RIGHT_BOUNDARY, STOP_LINE, CROSSWALK, ROUTE_LANES]
+max_map_elements:
+  LANE: 30
+  LEFT_BOUNDARY: 30
+  RIGHT_BOUNDARY: 30
+  STOP_LINE: 20
+  CROSSWALK: 20
+  ROUTE_LANES: 30
+max_map_points:
+  LANE: 20
+  LEFT_BOUNDARY: 20
+  RIGHT_BOUNDARY: 20
+  STOP_LINE: 20
+  CROSSWALK: 20
+  ROUTE_LANES: 20
+vector_set_map_feature_radius: 35    # [m] The query radius scope relative to the current ego-pose.
+interpolation_method: linear
+total_max_points: 30
+
+# Model params
+embedding_dim: 384
+rotary_pe: True
+
+# Trajectory sampling params
+past_trajectory_sampling:
+  _target_: nuplan.planning.simulation.trajectory.trajectory_sampling.TrajectorySampling
+  _convert_: 'all'
+  num_poses: 4      # target future poses
+  time_horizon: 1.5  # [s] time horizon of future poses
+future_trajectory_sampling:
+  _target_: nuplan.planning.simulation.trajectory.trajectory_sampling.TrajectorySampling
+  _convert_: 'all'
+  num_poses: 16      # target future poses
+  time_horizon: 8.0  # [s] time horizon of future poses
+
+
+        # # Agent params
+        # max_agents: int,
+        # # Map params
+        # map_features: List[str],
+        # max_map_elements: Dict[str, int],
+        # max_map_points: Dict[str, int],
+        # vector_set_map_feature_radius: int,
+        # interpolation_method: str,
+        # total_max_points: int,
+        # # Model params
+        # embedding_dim: int,
+        # num_encoder_layers: int,
+        # num_decoder_layers: int,
+        # num_modes: int,
+        # # Trajectory params
+        # past_trajectory_sampling: TrajectorySampling,
+        # future_trajectory_sampling: TrajectorySampling,

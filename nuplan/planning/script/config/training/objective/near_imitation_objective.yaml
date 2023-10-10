@@ -1,0 +1,6 @@
+near_imitation_objective:
+  _target_: nuplan.planning.training.modeling.objectives.near_imitation_objective.NearImitationObjective
+  _convert_: 'all'
+
+  weight: 1.0                  # weight contribution to the overall loss
+  radius: 50.0

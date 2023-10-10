@@ -1,0 +1,5 @@
+multi_agent_prediction_objective:
+  _target_: nuplan.planning.training.modeling.objectives.multi_agent_prediction_objective.MultiAgentPredictionObjective
+  _convert_: 'all'
+
+  weight: .1                  # weight contribution to the overall loss

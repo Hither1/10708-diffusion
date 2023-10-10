@@ -1,0 +1,13 @@
+HOME=/home/scratch/brianyan/ python nuplan/planning/script/run_training.py \
+    experiment_name=test \
+    py_func=cache \
+    cache.cache_path=/home/extra_scratch/brianyan/test_cache/ \
+    cache.force_feature_computation=True \
+    +training=training_urban_driver_diffusion_model_ma \
+    scenario_builder=nuplan_mini \
+    scenario_filter.limit_total_scenarios=0.01 \
+    lightning.trainer.params.max_epochs=10 \
+    data_loader.params.batch_size=32 \
+    data_loader.params.num_workers=8 \
+    worker=single_machine_thread_pool \
+    worker.use_process_pool=True
